@@ -16,13 +16,13 @@ function DisplayItems(Props) {
                                 {Items.PPrice}
                             </div>
                             <div className="col-3">
-                                {Items.PPrice}
+                                {Items.PQuantity*Items.PPrice}
                             </div>
                             <div className="col-2">
                                 <ButtonGroup Quan={Items.PQuantity} Add={Props.Inc} Sub={Props.Dec} Ind={In}/>
                             </div>
                             <div className="col-2">
-                                <button className='btn btn-info'>Remove</button>
+                                <button className='btn btn-info' onClick={()=>{Props.Rem(In)}}>Remove</button>
                             </div>
                         </div>
                     )

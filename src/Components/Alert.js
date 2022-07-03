@@ -1,10 +1,11 @@
 import React from 'react'
 
-function Alert() {
+function Alert(Props) {
+    let CName=`alert alert-${Props.BG} rounded-0 mb-1 text-success`;
     return (
         <div>
-            <div className="alert alert-success rounded-0 mb-1 text-success" role="alert">
-                Welcome to The Cart App , Happy Shpping!
+            <div className={CName} role="alert">
+                {Props.Heading}
             </div>
         </div>
     )

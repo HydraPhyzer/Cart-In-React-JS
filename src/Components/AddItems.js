@@ -11,33 +11,36 @@ let Obj =
             PQuantity: 0,
         },
         {
-            PName: "Surf Excel",
+            PName: "Surf Bronze",
             PPrice: 100,
             PQuantity: 0,
         }
     ]
-    function AddItems() {
+function AddItems() {
     let [ItemList, setItemList] = useState(Obj);
 
     let Increment = (Index) => {
-        let NewItemsList = [...Obj];
+        let NewItemsList = [...ItemList];
         NewItemsList[Index].PQuantity += 1;
         setItemList(NewItemsList);
     }
     let Deccrement = (Index) => {
-        let NewItemsList = [...Obj];
-        if (NewItemsList[Index].PQuantity > 0) {
+        let NewItemsList = [...ItemList];
+        if (NewItemsList[Index].PQuantity >0) {
             NewItemsList[Index].PQuantity -= 1;
             setItemList(NewItemsList);
         }
-        else {
-            setItemList(NewItemsList);
-        }
+    }
+    let Remove = (Index) => {
+        let NewItemsList = [...ItemList];
+        NewItemsList.splice(Index, 1);
+        setItemList(NewItemsList);
     }
     return (
         <div>
-            <Alert />
-            <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} />
+            <Alert Heading={"Welcome to The Cart App , Happy Shpping!"} BG={"primary"}/>
+                
+            {ItemList.length>0? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} />:<Alert Heading={"Your Cart is Empty!"} BG={"danger"}/>}
         </div>
     )
 }
