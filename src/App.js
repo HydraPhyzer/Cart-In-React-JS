@@ -1,9 +1,12 @@
 import './App.css'
+import AddItems from './Components/AddItems'
 
 function App()
 {
     return(
-        <div>Hello World</div>
+        <div>
+            <AddItems/>
+        </div>
     )
 }
 
