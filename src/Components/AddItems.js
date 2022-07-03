@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './AddItems.css'
 import Alert from './Alert'
 import DisplayItems from './DisplayItems'
+import Form from './Form'
 
 let Obj =
     [
@@ -39,7 +40,9 @@ function AddItems() {
     return (
         <div>
             <Alert Heading={"Welcome to The Cart App , Happy Shpping!"} BG={"primary"}/>
-                
+            
+            <Form />
+
             {ItemList.length>0? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} />:<Alert Heading={"Your Cart is Empty!"} BG={"danger"}/>}
         </div>
     )
