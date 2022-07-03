@@ -1,0 +1,20 @@
+.form-control
+{
+    border-radius: 0px;
+}
+input
+{
+    outline: none;
+}
+.col-4
+{
+    padding: 0px 1rem 0px 0px;
+}
+input:focus
+{
+    outline: none;
+}
+.btn
+{
+    border-radius: 0px;
+}

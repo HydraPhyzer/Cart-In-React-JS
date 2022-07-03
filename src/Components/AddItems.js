@@ -37,13 +37,23 @@ function AddItems() {
         NewItemsList.splice(Index, 1);
         setItemList(NewItemsList);
     }
+    let GetFormData=(Na , Pri)=>
+    {
+        let Ob=
+        {
+            PName:Na,
+            PPrice:Pri,
+            PQuantity:0,
+        }
+        let NewOb=[Ob , ...ItemList];
+        setItemList(NewOb);
+    }
     return (
         <div>
-            <Alert Heading={"Welcome to The Cart App , Happy Shpping!"} BG={"primary"}/>
-            
-            <Form />
+            <Form Inp={GetFormData}/>
 
             {ItemList.length>0? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} />:<Alert Heading={"Your Cart is Empty!"} BG={"danger"}/>}
+
         </div>
     )
 }
