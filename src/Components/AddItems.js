@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Alert from './Alert/Alert'
 import DisplayItems from './DisplayItems'
 import Form from './Form/Form'
+import Footer from './Footer/Footer'
 
 let Obj =
     [
@@ -27,7 +28,6 @@ let Obj =
                 Val += (Elem.PQuantity * Elem.PPrice);
             })
             SetTotal(Val);
-            Props.Set(Total);
         }
 
         CalcTotal();
@@ -63,11 +63,25 @@ let Obj =
         let NewOb = [Ob, ...ItemList];
         setItemList(NewOb);
     }
+    let RemoveAll=(Val)=>
+    {
+        if(Val===1)
+        {
+            let NewSt=[...ItemList];
+            NewSt.forEach((Elem)=>
+            {
+                Elem.PQuantity=0;
+            });
+            setItemList(NewSt);
+        }
+    }
     return (
         <div>
             <Form Inp={GetFormData} />
 
             {ItemList.length > 0 ? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} /> : <Alert Heading={"Your Cart is Empty!"} BG={"danger"} />}
+
+            <Footer Ans={Total} Ind={RemoveAll}/>
         </div>
     )
 }
