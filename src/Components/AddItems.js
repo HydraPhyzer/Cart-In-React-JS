@@ -4,6 +4,13 @@ import DisplayItems from './DisplayItems'
 import Form from './Form/Form'
 import Footer from './Footer/Footer'
 
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 let Obj =
     [
         {
