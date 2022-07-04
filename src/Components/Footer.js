@@ -1,12 +1,14 @@
 import React from 'react'
 import './Footer.css'
 
-function Footer() {
+function Footer(Props) {
   return (
-    <div className='row m-2 text-center Foot'>
-            <button className='col-4 btn btn-dark Footer-Comp '>Reset Now</button>
-            <div className="col-4 bg-primary Footer-Comp">Total Bill :400$</div>
-            <button className='col-4 btn btn-dark Footer-Comp'>View Cart</button>
+    <div className='Feet'>
+      <div className='row text-center Foot container-fluid px-2 rounded-1'>
+              <button className='col-4 btn btn-dark Footer-Comp bg-danger'>Reset Now</button>
+              <div className="col-4 bg-primary Footer-Comp bg-warning">Total Bill :{Props.Ans}$</div>
+              <button className='col-4 btn btn-dark Footer-Comp'>View Cart</button>
+      </div>
     </div>
   )
 }

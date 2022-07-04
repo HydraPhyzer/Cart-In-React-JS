@@ -2,3 +2,18 @@
 {
     padding: 10px;
 }
+button
+{
+    outline: none;
+}
+.Foot
+{
+    position: fixed;
+    bottom: 5px;
+}
+.Feet
+{
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './AddItems.css'
 import Alert from './Alert'
 import DisplayItems from './DisplayItems'
@@ -17,43 +17,62 @@ let Obj =
             PQuantity: 0,
         }
     ]
-function AddItems() {
+    function AddItems(Props) {
     let [ItemList, setItemList] = useState(Obj);
+    let [Total, SetTotal] = useState(0);
+
+    useEffect(() => {
+        let CalcTotal = () => {
+            let Val = 0;
+            ItemList.forEach((Elem) => {
+                Val += (Elem.PQuantity * Elem.PPrice);
+            })
+            SetTotal(Val);
+            Props.Set(Total);
+        }
+
+        CalcTotal();
+    }, [ItemList , Props , Total]);
+
 
     let Increment = (Index) => {
         let NewItemsList = [...ItemList];
         NewItemsList[Index].PQuantity += 1;
+
+
         setItemList(NewItemsList);
+        // CalcTotal();
     }
     let Deccrement = (Index) => {
         let NewItemsList = [...ItemList];
-        if (NewItemsList[Index].PQuantity >0) {
+        if (NewItemsList[Index].PQuantity > 0) {
             NewItemsList[Index].PQuantity -= 1;
             setItemList(NewItemsList);
+            // CalcTotal();
         }
     }
     let Remove = (Index) => {
         let NewItemsList = [...ItemList];
         NewItemsList.splice(Index, 1);
         setItemList(NewItemsList);
+
+        // CalcTotal();
     }
-    let GetFormData=(Na , Pri)=>
-    {
-        let Ob=
+    let GetFormData = (Na, Pri) => {
+        let Ob =
         {
-            PName:Na,
-            PPrice:Pri,
-            PQuantity:0,
+            PName: Na,
+            PPrice: Pri,
+            PQuantity: 0,
         }
-        let NewOb=[Ob , ...ItemList];
+        let NewOb = [Ob, ...ItemList];
         setItemList(NewOb);
     }
     return (
         <div>
-            <Form Inp={GetFormData}/>
+            <Form Inp={GetFormData} />
 
-            {ItemList.length>0? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} />:<Alert Heading={"Your Cart is Empty!"} BG={"danger"}/>}
-
+            {ItemList.length > 0 ? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} /> : <Alert Heading={"Your Cart is Empty!"} BG={"danger"} />}
         </div>
     )
 }
