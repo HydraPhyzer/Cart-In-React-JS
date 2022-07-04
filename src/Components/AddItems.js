@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import './AddItems.css'
-import Alert from './Alert'
+import Alert from './Alert/Alert'
 import DisplayItems from './DisplayItems'
-import Form from './Form'
+import Form from './Form/Form'
 
 let Obj =
     [
@@ -41,22 +40,18 @@ let Obj =
 
 
         setItemList(NewItemsList);
-        // CalcTotal();
     }
     let Deccrement = (Index) => {
         let NewItemsList = [...ItemList];
         if (NewItemsList[Index].PQuantity > 0) {
             NewItemsList[Index].PQuantity -= 1;
             setItemList(NewItemsList);
-            // CalcTotal();
         }
     }
     let Remove = (Index) => {
         let NewItemsList = [...ItemList];
         NewItemsList.splice(Index, 1);
         setItemList(NewItemsList);
-
-        // CalcTotal();
     }
     let GetFormData = (Na, Pri) => {
         let Ob =

@@ -1,6 +1,5 @@
 import React from 'react'
-import './DisplayItems.css'
-import ButtonGroup from './ButtonGroup'
+import ButtonGroup from './Buttons (+ , -)/ButtonGroup'
 
 function DisplayItems(Props) {
     return (

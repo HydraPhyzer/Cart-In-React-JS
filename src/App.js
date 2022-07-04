@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import AddItems from './Components/AddItems'
-import Alert from './Components/Alert'
-import Footer from './Components/Footer'
+import Alert from './Components/Alert/Alert'
+import Footer from './Components/Footer/Footer'
 
 function App()
 {
