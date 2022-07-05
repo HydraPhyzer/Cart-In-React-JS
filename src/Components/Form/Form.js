@@ -22,14 +22,14 @@ function Form(Props) {
     return (
         <div>
             <form className='row m-2 mt-3 d-flex justify-content-between' onSubmit={(E)=>{FormHandle(E)}}>
-                <div className=" col-4">
+                <div className=" col-sm-4 col-12 my-2">
                     <input type="text" value={Name} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='Enter Product Name' onChange={(E)=>{HandleName(E)}}/>
                 </div>
-                <div className=" col-4">
+                <div className=" col-sm-4 col-12 my-2">
                     <input type="number" value={Price} className="form-control" id="exampleInputPassword1" placeholder='Enter Product Price' onChange={(E)=>{HandlePrice(E)}}/>
                 </div>
-                <div className=" col-4 justify-self-end">
-                    <button type="submit" className="btn btn-primary">Add Product</button>
+                <div className=" col-sm-4 justify-self-end col-12 my-2">
+                    <button type="submit" className="btn btn-primary w-100">Add Product</button>
                 </div>
             </form>
         </div>

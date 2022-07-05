@@ -3,12 +3,12 @@ import Alert from './Alert/Alert'
 import DisplayItems from './DisplayItems'
 import Form from './Form/Form'
 import Footer from './Footer/Footer'
+import ViewCart from './ViewCart'
 
-import ReactDOM from "react-dom/client";
 import {
-  BrowserRouter,
-  Routes,
-  Route,
+    BrowserRouter,
+    Routes,
+    Route,
 } from "react-router-dom";
 
 let Obj =
@@ -24,7 +24,7 @@ let Obj =
             PQuantity: 0,
         }
     ]
-    function AddItems(Props) {
+function AddItems(Props) {
     let [ItemList, setItemList] = useState(Obj);
     let [Total, SetTotal] = useState(0);
 
@@ -38,7 +38,7 @@ let Obj =
         }
 
         CalcTotal();
-    }, [ItemList , Props , Total]);
+    }, [ItemList, Props, Total]);
 
 
     let Increment = (Index) => {
@@ -70,25 +70,36 @@ let Obj =
         let NewOb = [Ob, ...ItemList];
         setItemList(NewOb);
     }
-    let RemoveAll=(Val)=>
-    {
-        if(Val===1)
-        {
-            let NewSt=[...ItemList];
-            NewSt.forEach((Elem)=>
-            {
-                Elem.PQuantity=0;
+    let RemoveAll = (Val) => {
+        if (Val === 1) {
+            let NewSt = [...ItemList];
+            NewSt.forEach((Elem) => {
+                Elem.PQuantity = 0;
             });
             setItemList(NewSt);
         }
     }
     return (
         <div>
-            <Form Inp={GetFormData} />
 
-            {ItemList.length > 0 ? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} /> : <Alert Heading={"Your Cart is Empty!"} BG={"danger"} />}
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={
+                        <div>
+                            <Alert Heading={"Welcome to The Cart App , Happy Shpping!"} BG={"primary"} />
 
-            <Footer Ans={Total} Ind={RemoveAll}/>
+                            <Form Inp={GetFormData} />
+
+                            {ItemList.length > 0 ? <DisplayItems Display={ItemList} Inc={Increment} Dec={Deccrement} Rem={Remove} /> : <Alert Heading={"Your Cart is Empty!"} BG={"danger"} />}
+
+                            <Footer Ans={Total} Ind={RemoveAll} />
+
+                        </div>
+                    }></Route>
+                    <Route path="ViewCart" element={<ViewCart Display={ItemList} Rem={Remove}/>}></Route>
+                </Routes>
+            </BrowserRouter>
+
         </div>
     )
 }

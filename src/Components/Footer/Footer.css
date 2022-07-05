@@ -2,13 +2,13 @@
 {
     padding: 10px;
 }
-Link button
+.Feet button
 {
-    outline: none;
+    border: none;
 }
 .Foot
 {
-    position: fixed;
+    position:sticky;
     bottom: 5px;
 }
 .Feet
@@ -16,4 +16,5 @@ Link button
     display: flex;
     align-items: center ;
     justify-content: center;
+    border-radius: 10px;
 }
